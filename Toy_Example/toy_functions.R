@@ -1,5 +1,5 @@
 
-source("../rsobol.R")
+source("rsobol.R")
 
 f<-function(x){
   return(exp(-x^2)*cos(x))
