@@ -39,17 +39,17 @@ setwd("path/to/qmc4categorical")
 install.packages("ggplot2")
 ```
 
-## Run the examples
+## Running the examples
 
-- To run the toy example, run in R:
+- To run the toy example, run in R or RStudio:
 ```r
 source("Toy_Example/toy_driver.R")
 ```
 
-- To run the flood model example, run in R:
+- To run the flood model example, run in R or RStudio:
 ```r
 source("Flood_Example/flood_driver.R")
 ```
 
-The plots will be saved in the corresponding example folders (`toy_results` and `flood_results` folders).
+The plots will be saved in the corresponding example folders (as `toy_results` and `flood_results` folders).
 
