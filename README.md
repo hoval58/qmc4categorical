@@ -33,10 +33,11 @@ git clone https://github.com/yourusername/qmc4categorical.git
 setwd("path/to/qmc4categorical")
 ```
 
-3. Install ggplot2 (if not already installed)
+3. Install ggplot2 and VGAM (if not already installed)
 
 ```r
 install.packages("ggplot2")
+install.packages("VGAM")
 ```
 
 ## Running the examples
