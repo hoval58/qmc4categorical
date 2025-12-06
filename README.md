@@ -51,5 +51,5 @@ source("Toy_Example/toy_driver.R")
 source("Flood_Example/flood_driver.R")
 ```
 
-
+The plots will be saved in the corresponding example folders.
 
