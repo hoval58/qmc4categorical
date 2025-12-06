@@ -1,6 +1,8 @@
 
 source("rsobol.R")
 
+library(VGAM)
+
 H<-function(Q,K_s,Z_m,Z_v){
   slope<-(Z_m-Z_v)/L
   return((Q/(K_s*B*sqrt(slope)))^0.6)
