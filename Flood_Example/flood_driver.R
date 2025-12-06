@@ -2,6 +2,7 @@
 source("Flood_Example/flood_model.R")
 source("Flood_Example/plot_results_flood.R")
 
+if (!dir.exists("flood_results")) dir.create("flood_results")
 
 #fixed parameters of the Saint-Venant flood model
 

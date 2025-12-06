@@ -3,6 +3,8 @@
 source("Toy_Example/toy_functions.R")
 source("Toy_Example/plot_results_toy.R")
 
+if (!dir.exists("toy_results")) dir.create("toy_results")
+
 alphas=c(0.5,0.44,0.01,0.01,0.01,0.01,0.01,0.01)
 thetas=c(0.7,1,1.5,1.6,1.7,1.8,1.9,2)
 s=2 #dimension needed for all are random vectors: the first to allocate, the second to sample
