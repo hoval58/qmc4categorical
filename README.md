@@ -32,8 +32,9 @@ git clone https://github.com/yourusername/qmc4categorical.git
 ```r
 setwd("path/to/qmc4categorical")
 ```
+This project was developed and tested using R version **4.4.0**. We recommend using R ≥ 4.4.0 to ensure compatibility.
 
-3. Install ggplot2 and VGAM (if not already installed)
+3. Install **ggplot2** and **VGAM** (if not already installed)
 
 ```r
 install.packages("ggplot2")
