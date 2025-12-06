@@ -16,7 +16,7 @@ var_rqmc_pow2_list<-list()
 var_rqmc_indep_list<-list()
 
 for (j in 1:length(m_list)){
-  print(m_list[[j]])
+  cat("Running m =", m_list[[j]], "\n")
   mu_list_mc<-list()
   mu_list_plain_rqmc<-list()
   mu_list_rqmc_adjusted<-list()

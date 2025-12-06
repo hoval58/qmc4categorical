@@ -1,5 +1,5 @@
 
-source("../rsobol.R")
+source("rsobol.R")
 
 H<-function(Q,K_s,Z_m,Z_v){
   slope<-(Z_m-Z_v)/L
