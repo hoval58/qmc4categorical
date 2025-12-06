@@ -63,7 +63,7 @@ var_lists <- list(
 )
 
 # Plot and save figure
-plot_variance(var_lists, sample_sizes, file = "Flood_example/flood_results/figures/variance_plot.png")
+plot_variance(var_lists, sample_sizes, file = "Flood_example/flood_results/variance_plot.png")
 
 
 ### --- compute variance of the importance adjusted estimator with different rhos --- ###
@@ -126,7 +126,7 @@ plot_rho_variance(
   var_lists_diff_rhos,
   sample_sizes,
   slope = -1.8,
-  file = "Flood_Example/flood_results/figures/diff_rhos.png"
+  file = "Flood_Example/flood_results/diff_rhos.png"
 )
 
 
