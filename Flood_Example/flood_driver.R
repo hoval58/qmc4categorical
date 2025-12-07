@@ -28,7 +28,7 @@ var_rqmc_pow2_list<-list()
 var_rqmc_indep_list<-list()
 
 for (j in 1:length(m_list)){
-  cat("Running Plot 1 m =", m_list[[j]], "\n")
+  cat("Plot 1 running m =", m_list[[j]], "\n")
   mu_list_mc<-list()
   mu_list_plain_rqmc<-list()
   mu_list_rqmc_adjusted<-list()
@@ -76,7 +76,7 @@ var_rho_2_list <- list()
 var_rho_3_list <- list()
 
 for (j in 1:length(m_list)) {
-  cat("Running Plot 2 m =", m_list[[j]], "\n")
+  cat("Plot 2 running m =", m_list[[j]], "\n")
   
   # temp lists for each replication
   mu_list_infty <- vector("list", n_rep)
