@@ -24,13 +24,14 @@ This repository contains the R code used to produce the results for the two exam
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/qmc4categorical.git
+git clone https://github.com/hoval58/qmc4categorical.git
 ```
 
 2. Open R or RStudio and set the working directory to the repository root:
 
 ```r
-setwd("path/to/qmc4categorical")
+setwd("path/to/qmc4categorical")  # <-- change this to your actual path to the qmc4categorical folder
+# Example: setwd("C:/Users/YourName/Documents/qmc4categorical")
 ```
 This project was developed and tested using R version **4.4.0**. We recommend using R ≥ 4.4.0 to ensure compatibility.
 
