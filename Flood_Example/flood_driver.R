@@ -8,7 +8,7 @@ dir.create("Flood_Example/flood_results", recursive = TRUE, showWarnings = FALSE
 
 B=300 #fixed
 L=5000
-s=5 #dimension of thw random vectors: 1 for selecting the stratum + 4 for sampling the 4 variables
+s=5 #dimension of the random vectors: 1 for selecting the stratum + 4 for sampling the 4 variables
 
 #parameters of the Frechet and Gamma distributions in the mixture
 
@@ -18,8 +18,10 @@ scale_Q<-c(1300,3900,1300,3900)
 shape_K<-c(90,90,15,15)
 scale_K<-c(1/3,1/3,1,1)
 
-m_list=seq(3,12) #sample sizes
+m_list=seq(3,12) #sample sizes (2^m_list)
 n_rep=500 #number of replicates
+
+### --- compute variance of the 5 estimators considered in the paper --- ###
 
 var_mc_list<-list()
 var_plain_rqmc_list<-list()

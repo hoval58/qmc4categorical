@@ -5,12 +5,15 @@ source("Toy_Example/plot_results_toy.R")
 
 dir.create("Toy_Example/toy_results", recursive = TRUE, showWarnings = FALSE)
 
-alphas=c(0.5,0.44,0.01,0.01,0.01,0.01,0.01,0.01)
-thetas=c(0.7,1,1.5,1.6,1.7,1.8,1.9,2)
-s=2 #dimension needed for all are random vectors: the first to allocate, the second to sample
+alphas=c(0.5,0.44,0.01,0.01,0.01,0.01,0.01,0.01) #mixture weights
+thetas=c(0.7,1,1.5,1.6,1.7,1.8,1.9,2) #mixture components parameters
+s=2 #dimension needed for all are random vectors: the first to allocate to one stratum, the second to sample
 
-m_list=seq(3,12)
-n_rep=500
+m_list=seq(3,12) #sample sizes (2^m_list)
+n_rep=500 #number of replicates
+
+### --- compute variance of the 5 estimators considered in the paper --- ###
+
 var_mc_list<-list()
 var_plain_rqmc_list<-list()
 var_rqmc_adjusted_list<-list()

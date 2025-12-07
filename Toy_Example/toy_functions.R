@@ -6,10 +6,14 @@ f<-function(x){
 }
 
 alloc_pow2 = function(alpha_list,M,tol=1e-9,verbose=FALSE,ansatz=0,rho=3){
+  # Computes an allocation of 2^M samples across L strata such that each 
+  # stratum receives a power-of-two number of samples, chosen to approximate 
+  # an ideal proportional allocation.
+  
   L=length(alpha_list)
   n=2^M
   if(rho=="infinity"){
-    b=floor(log2(n/L))#all strata get initalized to this sample size
+    b=floor(log2(n/L))#all strata get initialized to the same sample size
     m=rep(b,L)
     todo=n-L*2^b
     k=floor(todo/2^b)#number of strata to double
@@ -23,7 +27,7 @@ alloc_pow2 = function(alpha_list,M,tol=1e-9,verbose=FALSE,ansatz=0,rho=3){
   else{
     
     if( ansatz==0 )
-      beta = alpha_list^(2/(rho+1))
+      beta = alpha_list^(2/(rho+1)) #ideal allocation (eq 14)
     else
       beta = alpha_list^(2/(rho+2))
     beta = beta/sum(beta) #renormalizes
@@ -49,7 +53,7 @@ alloc_pow2 = function(alpha_list,M,tol=1e-9,verbose=FALSE,ansatz=0,rho=3){
     while( todo > 0 ){
       if( min(2^m) > todo )
         stop("Samples cannot be allocated properly.")
-      l = which.max( (beta/2^m)*(2^m<=todo))
+      l = which.max( (beta/2^m)*(2^m<=todo)) #increment the most under represented of the eligible strata
       m[l] = m[l]+1
       todo = n - sum(2^m)
       reportit()
@@ -60,6 +64,8 @@ alloc_pow2 = function(alpha_list,M,tol=1e-9,verbose=FALSE,ansatz=0,rho=3){
 }
 
 alloc_int<-function(alpha_list,rho=2,M,ansatz=0){
+  # Computes an integer allocation of 2^M samples across L strata by rounding 
+  # an optimal proportional allocation (based on Eq. 14 of the paper).
   
   L=length(alpha_list)
   n=2^M
@@ -83,8 +89,10 @@ alloc_int<-function(alpha_list,rho=2,M,ansatz=0){
   return(vec)
 }
 
-#a function that allocates a point in (0,1) to its stratum
+
 which_stratum<-function(v,setting,alpha_list,m,rho){
+  #a function that allocates a point in (0,1) to its stratum
+  
   if (setting=="mc"|setting=="plain-rqmc"){
     cum_betas<-c(0,cumsum(alpha_list))
   }
@@ -101,6 +109,21 @@ which_stratum<-function(v,setting,alpha_list,m,rho){
 }
 
 compute_estimator<-function(m, setting, seed, alpha_list, theta_list, rho=3){
+  # Computes an estimator of E[f(X)] using either Monte Carlo (MC), 
+  # plain randomized quasi–Monte Carlo (RQMC), RQMC with adjusted stratified 
+  # weights, or RQMC with power-of-two independent sampling. 
+  #
+  # The function supports several sampling settings:
+  #
+  #   • "mc"                – Standard Monte Carlo sampling using IID uniforms.
+  #   • "plain-rqmc"        – Sobol-based RQMC without stratification adjustment.
+  #   • "rqmc-adjusted"     – RQMC with importance-adjusted stratum weights 
+  #                           using integer allocations (alloc_int).
+  #   • "rqmc-pow2"         – RQMC with power-of-two allocation per stratum 
+  #                           (alloc_pow2), averaging within each stratum.
+  #   • "rqmc-indep"        – Independent Sobol sequences for each stratum, each 
+  #                           using 2^{m_l} samples where m_l comes from alloc_pow2.
+  
   L=length(alpha_list)
   
   if (setting=="mc"){
