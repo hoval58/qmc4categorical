@@ -19,7 +19,7 @@ alloc_pow2 <- function(alpha_list,M,tol=1e-9,verbose=FALSE,ansatz=0,rho=3){
     m=rep(b,L)
     todo=n-L*2^b
     k=floor(todo/2^b)#number of strata to double
-    remainders<-n/L-2^b
+    remainders<-rep(n/L - 2^b, L)
     if(k>0){
       top_k_indices <- order(remainders, decreasing = TRUE)[1:k]
       m[top_k_indices]=m[top_k_indices]+1
